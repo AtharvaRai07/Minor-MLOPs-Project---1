@@ -38,7 +38,15 @@ def save_csv(df:pd.DataFrame, file_path:str):
         dir_path = os.path.dirname(file_path)
         os.makedirs(dir_path, exist_ok=True)
 
-        df.to_csv(file_path, index=False)
+        # Standardize arrays/series/dataframes to a DataFrame before writing.
+        if isinstance(df, pd.DataFrame):
+            out_df = df
+        elif isinstance(df, pd.Series):
+            out_df = df.to_frame()
+        else:
+            out_df = pd.DataFrame(df)
+
+        out_df.to_csv(file_path, index=False)
         logging.info("Succesfully saved the CSV file")
 
     except Exception as e:
