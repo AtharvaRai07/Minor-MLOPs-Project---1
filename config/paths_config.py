@@ -20,3 +20,14 @@ LABEL_ENCODER_PATH = os.path.join(LABEL_ENCODER_DIR, "label_encoder.pkl")
 
 SCALER_DIR = os.path.join(PREPROCESSING_DIR, "scaler")
 SCALER_PATH = os.path.join(SCALER_DIR, "scaler.pkl")
+
+############################## MODEL TRAINING RELATED PATHS #############################
+MODEL_DIR = "artifacts/model"
+MODEL_FILE_PATH = os.path.join(MODEL_DIR, "model.pkl")
+
+MODEL_EVALUTAION_DIR = os.path.join(MODEL_DIR, "model_evaluation")
+MODEL_SCORE_PATH = os.path.join(MODEL_EVALUTAION_DIR, "model_evaluation.txt")
+CONFUSION_MATRIX_PATH = os.path.join(MODEL_EVALUTAION_DIR, "confusion_matrix.png")
+CLASSIFICATION_REPORT_PATH = os.path.join(MODEL_EVALUTAION_DIR, "classification_report.txt")
+DECISION_TREE_PLOT_PATH = os.path.join(MODEL_EVALUTAION_DIR, "decision_tree_plot.png")
+

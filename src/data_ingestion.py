@@ -28,7 +28,7 @@ class DataIngestion:
 
         except Exception as e:
             logging.error("Error while downloading the csv file")
-            CustomException(e, sys)
+            raise CustomException(e, sys)
 
 if __name__ == "__main__":
     data_ingestion = DataIngestion(CONFIG_PATH)
