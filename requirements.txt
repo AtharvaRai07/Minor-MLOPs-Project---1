@@ -8,3 +8,4 @@ ipykernel
 pyyaml
 google-cloud-storage
 flask
+-e .
