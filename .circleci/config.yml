@@ -15,6 +15,9 @@ jobs:
   build_docker_image:
     executor: docker-executor
     steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
       - run:
           name: Authenticate with Google Cloud
           command: |
@@ -31,6 +34,7 @@ jobs:
   deploy_to_gke:
     executor: docker-executor
     steps:
+      - checkout
       - run:
           name: Authenticate with Google Cloud
           command: |
