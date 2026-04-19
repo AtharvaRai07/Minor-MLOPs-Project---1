@@ -15,10 +15,12 @@ jobs:
   build_docker_image:
     executor: docker-executor
     steps:
+      - setup_remote_docker:
+          version: 20.10.24
       - run:
           name: Authenticate with Google Cloud
           command: |
-            echo "${GCLOUD_SERVICE_KEY}" | base64 --decode > gcp-key.json
+            echo "$GCLOUD_SERVICE_KEY" | base64 --decode > gcp-key.json
             gcloud auth activate-service-account --key-file=gcp-key.json
             gcloud auth configure-docker us-central1-docker.pkg.dev
 
@@ -41,7 +43,7 @@ jobs:
       - run:
           name: Configure GKE
           command: |
-            gcloud container clusters get-credentials $GKE_CLUSTER --zone $GOOGLE_COMPUTE_ZONE --project $GOOGLE_PROJECT_ID
+            gcloud container clusters get-credentials $GKE_CLUSTER --zone $GOOGLE_COMPUTE_REGION --project $GOOGLE_PROJECT_ID
 
       - run:
           name: Deploy to GKE
